@@ -57,26 +57,27 @@
   </div>
 </template>
 <script>
-import { mapMutations, mapState } from "vuex";
-import LoginForm from "./LoginForm.vue";
-import RegisterForm from "./RegisterForm.vue";
+import { mapMutations, mapState } from 'vuex';
+import LoginForm from './LoginForm.vue';
+import RegisterForm from './RegisterForm.vue';
+
 export default {
   components: { LoginForm, RegisterForm },
-  name: "Auth",
+  name: 'Auth',
   data() {
     return {
-      tab: "login",
+      tab: 'login',
     };
   },
   computed: {
     ...mapState({
-      modal: "authModalShow",
-      //using alias with an object instead of passing an array
+      modal: 'authModalShow',
+      // using alias with an object instead of passing an array
     }),
     // ...mapState(["authModalShow"]),
   },
   methods: {
-    ...mapMutations(["toggleAuthModal"]),
+    ...mapMutations(['toggleAuthModal']),
   },
 };
 </script>

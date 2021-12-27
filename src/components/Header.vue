@@ -7,7 +7,7 @@
         class="text-white font-bold uppercase text-2xl mr-4"
         exact-active-class="no-active"
         :to="{ name: 'home' }"
-        >Music</router-link
+        >{{ $t("header.music") }}</router-link
       >
       <div class="flex flex-grow items-center">
         <!-- Primary Navigation -->
@@ -15,39 +15,43 @@
           <!-- Navigation Links -->
           <li>
             <router-link class="px-2 text-white" :to="{ name: 'about' }"
-              >About
+              >{{ $t("header.about") }}
             </router-link>
           </li>
           <li v-if="!userLoggedIn">
-            <a
-              class="px-2 text-white"
-              href="#"
-              @click.prevent="toggleAuthModal"
-            >
-              Login / Register</a
+            <a class="px-2 text-white" href="#" @click.prevent="toggleAuthModal">
+              {{ $t("header.login_register") }}</a
             >
           </li>
           <template v-else>
             <li>
-              <router-link class="px-2 text-white" :to="{ name: 'manage' }"
-                >Manage</router-link
-              >
+              <router-link class="px-2 text-white" :to="{ name: 'manage' }">{{
+                $t("header.manage")
+              }}</router-link>
             </li>
             <li>
-              <a @click.prevent="signout" class="px-2 text-white" href="#"
-                >logout</a
-              >
+              <a @click.prevent="signout" class="px-2 text-white" href="#">{{
+                $t("header.logout")
+              }}</a>
             </li>
           </template>
+        </ul>
+        <ul class="flex flex-row mt-1 ml-auto">
+          <li>
+            <a href="#" class="px-2 text-white" @click.prevent="changeLocale">
+              {{ currentLocale }}
+            </a>
+          </li>
         </ul>
       </div>
     </nav>
   </header>
 </template>
 <script>
-import { mapMutations, mapState } from "vuex";
+import { mapMutations, mapState } from 'vuex';
+
 export default {
-  name: "Header",
+  name: 'Header',
 
   methods: {
     // toggleAuthModal(){
@@ -55,15 +59,22 @@ export default {
     //     console.log('click');
     // }
     signout() {
-      this.$store.dispatch("signout");
+      this.$store.dispatch('signout');
       if (this.$route.meta.requiresAuth) {
-        this.$router.push({ name: "home" });
+        this.$router.push({ name: 'home' });
       }
     },
-    ...mapMutations(["toggleAuthModal"]),
+    ...mapMutations(['toggleAuthModal']),
+
+    changeLocale() {
+      this.$i18n.locale = this.$i18n.locale === 'fr' ? 'en' : 'fr';
+    },
   },
   computed: {
-    ...mapState(["userLoggedIn"]),
+    ...mapState(['userLoggedIn']),
+    currentLocale() {
+      return this.$i18n.locale === 'fr' ? 'English' : 'French';
+    },
   },
 };
 </script>

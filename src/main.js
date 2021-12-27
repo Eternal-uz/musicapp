@@ -5,19 +5,23 @@ import store from './store';
 import './assets/tailwind.css';
 import './assets/main.css';
 import { auth } from './includes/firebase';
-import VeeValidatePlugin from './includes/validation'
+import VeeValidatePlugin from './includes/validation';
+import Icon from '@/directives/icon';
+import i18n from './includes/i18n';
+import './registerServiceWorker';
 
 let app;
 
 auth.onAuthStateChanged(() => {
-    if (!app) {
+  if (!app) {
+    app = createApp(App);
 
-        app = createApp(App)
+    app.use(i18n);
+    app.use(store);
+    app.use(router);
+    app.use(VeeValidatePlugin);
+    app.directive('icon', Icon);
 
-        app.use(store);
-        app.use(router);
-        app.use(VeeValidatePlugin);
-
-        app.mount('#app');
-    }
+    app.mount('#app');
+  }
 });
