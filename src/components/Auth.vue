@@ -71,7 +71,7 @@ export default {
   },
   computed: {
     ...mapState({
-      modal: 'authModalShow',
+      modal: (state) => state.auth.authModalShow,
       // using alias with an object instead of passing an array
     }),
     // ...mapState(["authModalShow"]),

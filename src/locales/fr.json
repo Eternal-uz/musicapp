@@ -1,0 +1,27 @@
+{
+  "header": {
+    "about": "Sur",
+    "login_register": "S'identifier / S'enregistrer",
+    "logout": "Se déconnecter",
+    "manage": "Faire en sorte",
+    "music": "Music"
+  },
+  "home": {
+    "listen": "Écoutez de la bonne musique !",
+    "songs": "Chansons"
+  },
+  "manage": {
+    "my_songs": "Mes chansons"
+  },
+  "register": {
+    "TOS": "",
+    "accept": ""
+  },
+  "song": {
+    "comment_count": "No comment | 1 Comment | {count} Comments"
+  },
+  "upload": {
+    "drop": "Déposez vos fichiers ici",
+    "upload": "Télécharger"
+  }
+}

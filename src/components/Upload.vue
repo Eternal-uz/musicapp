@@ -64,6 +64,17 @@ export default {
           return;
         }
 
+        if(!navigator.onLine){
+          this.uploads.push({
+            task: {},
+            current_progress: 100,
+            name: file.name,
+            variant: 'bg-red-400',
+            icon: 'fas fa-times',
+            text_class: 'text-red-400',
+          })
+        }
+
         const storageRef = storage.ref(); // "music-892be.appspot.com",
         const songRef = storageRef.child(`songs/${file.name}`); // "music-892be.appspot.com/songs/filename.mp3
         const task = songRef.put(file);

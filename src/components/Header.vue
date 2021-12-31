@@ -54,10 +54,6 @@ export default {
   name: 'Header',
 
   methods: {
-    // toggleAuthModal(){
-    //     this.$store.commit('toggleAuthModal');
-    //     console.log('click');
-    // }
     signout() {
       this.$store.dispatch('signout');
       if (this.$route.meta.requiresAuth) {
@@ -71,7 +67,8 @@ export default {
     },
   },
   computed: {
-    ...mapState(['userLoggedIn']),
+    ...mapState({
+      userLoggedIn: (state)=> state.auth.userLoggedIn}),
     currentLocale() {
       return this.$i18n.locale === 'fr' ? 'English' : 'French';
     },
